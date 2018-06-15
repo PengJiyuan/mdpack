@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "markdown bundler",
   "main": "index.js",
+  "bin": "./bin/mdpack.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/PengJiyuan/mdpack#readme",
   "dependencies": {
+    "commander": "^2.15.1",
+    "fs-extra": "^6.0.1",
     "json-stringify-pretty-compact": "^1.2.0",
     "remark": "^9.0.0",
     "remark-html": "^7.0.0"

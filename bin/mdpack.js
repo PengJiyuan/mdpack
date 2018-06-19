@@ -11,10 +11,30 @@ program
   .option('-p, --path [path]', 'Output path of bundled markdown file.')
   .option('-n, --name [name]', 'Output name of bundled markdown file.', 'bundle')
   .option('-f, --format [format]', 'Format type of bundle output, (md, html, all)', /^(md|html|all)$/i, 'md')
+  .option('--mc, markdownCss [markdownCss]', 'Html template markdown css file')
+  .option('--hc, --highlightCss [highlightCss]', 'Html template highlight css file')
+  .option('-t, --template [template]', 'template file (optional)')
   .parse(process.argv);
 
+function getOptions() {
+  let options = {};
+  if(program.markdownCss) {
+    options.markdownCss = program.markdownCss;
+  }
+  if(program.highlightCss) {
+    console.log('hc');
+    options.highlightCss = program.highlightCss;
+  }
+  if(program.template) {
+    options.template = path.resolve(process.cwd(), program.template);
+  }
+
+  return options;
+}
+
 if(program.entry && program.path) {
-  const data = bundle(path.resolve(process.cwd(), program.entry));
+  const options = getOptions();
+  const data = bundle(path.resolve(process.cwd(), program.entry), options);
   let outputFile;
 
   switch(program.format) {

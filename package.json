@@ -6,7 +6,7 @@
   "bin": "./bin/mdpack.js",
   "scripts": {
     "readme": "mdpack -e readme/index.md -p . -n README",
-    "precommit": "npm run readme && cd readme && mdpack -e index.md -p dist -n README -f all"
+    "precommit": "npm run readme && mdpack -e readme/index.md -p readme/dist -n README -f all && git add ."
   },
   "repository": {
     "type": "git",

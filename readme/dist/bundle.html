@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
+    <link href="https://unpkg.com/highlight.js@9.12.0/styles/github-gist.css" rel="stylesheet" />
+    <style>
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="markdown-body">
+      <h1 id="mdpack">mdpack</h1>
+<p>markdown bundler.</p>
+<h2 id="install">Install</h2>
+<pre><code class="language-bash">npm <span class="hljs-selector-tag">i</span> mdpack -g</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -o dist/output.md</code></pre>
+<h2 id="syntax">Syntax</h2>
+<pre><code class="language-markdown">@@import <span class="hljs-string">'path/xx.md'</span></code></pre>
+<h2 id="example">Example</h2>
+<p>index.md</p>
+<pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
+
+@@import <span class="hljs-string">'./a.md'</span></code></pre>
+<p>a.md</p>
+<pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
+
+BBBBBBBBBB</code></pre>
+<pre><code class="language-bash"><span class="hljs-selector-tag">mdpack</span> <span class="hljs-selector-tag">-e</span> <span class="hljs-selector-tag">index</span><span class="hljs-selector-class">.md</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.md</span></code></pre>
+<p>Will Generate <code>output.md</code> like that:</p>
+<pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"> Title</span>
+<span class="hljs-meta">
+#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
+
+BBBBBBBBBB</code></pre>
+<h2 id="options">Options</h2>
+<h4 id="-e-entry">-e, --entry</h4>
+<p><code>optional</code></p>
+<p>Entry of mdpack, a markdown file. (default: <code>index.md</code>)</p>
+<h4 id="-p-path">-p, --path</h4>
+<p>Output path of bundled markdown file.</p>
+<h4 id="-n-name">-n, --name</h4>
+<p><code>optional</code></p>
+<p>Output name of bundled markdown file. (default: <code>bundle</code>)</p>
+<h4 id="-f-format-md-html-all-">-f, --format [md | html | all]</h4>
+<p><code>optional</code></p>
+<p>Format type of bundle output. (default: <code>md</code>)</p>
+<h4 id="-mc-markdowncss-markdowncss-">--mc, --markdownCss [markdownCss]</h4>
+<p><code>optional</code></p>
+<p>Html template markdown css file, if not specified, mdpack will use a default cdn css.</p>
+<h4 id="-hc-highlightcss-highlightcss-">--hc, --highlightCss [highlightCss]</h4>
+<p><code>optional</code></p>
+<p>Html template highlight css file, if not specified, mdpack will use a default cdn css.</p>
+<h4 id="-t-template-template-">-t, --template [template]</h4>
+<p><code>optional</code></p>
+<p>Template html file. If you specify a template, this template should contains these keywords:</p>
+<ul>
+<li><code>&lt;% markdownCss %&gt;</code></li>
+<li><code>&lt;% highlightCss %&gt;</code></li>
+<li><code>&lt;% content %&gt;</code></li>
+</ul>
+<h2 id="license">LICENSE</h2>
+<p><a href="./LICENSE">MIT</a> © PengJiyuan</p>
+
+    </div>
+  </body>
+</html>

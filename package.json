@@ -5,7 +5,8 @@
   "main": "./lib/mdpack.js",
   "bin": "./bin/mdpack.js",
   "scripts": {
-    "readme": "mdpack -e readme/index.md -p . -n README"
+    "readme": "mdpack -e readme/index.md -p . -n README",
+    "precommit": "npm run readme && cd readme && mdpack -e index.md -p dist -n README -f all"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,11 @@
     "fs-extra": "^6.0.1",
     "highlight.js": "^9.12.0",
     "marked": "^0.4.0"
-  }
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "precommit"
+  ]
 }

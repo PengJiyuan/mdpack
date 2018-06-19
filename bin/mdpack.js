@@ -8,15 +8,41 @@ const pkg = require('../package.json');
 program
   .version(pkg.version)
   .option('-e, --entry [entry]', 'Entry of markdown')
-  .option('-o, --output [output]', 'Output of bundled markdown file.')
+  .option('-p, --path [path]', 'Output path of bundled markdown file.')
+  .option('-n, --name [name]', 'Output name of bundled markdown file.', 'bundle')
+  .option('-f, --format [format]', 'Format type of bundle output, (md, html, all)', /^(md|html|all)$/i, 'md')
   .parse(process.argv);
 
-if(program.entry && program.output) {
+if(program.entry && program.path) {
   const data = bundle(path.resolve(process.cwd(), program.entry));
-  const outputFile = path.resolve(process.cwd(), program.output);
+  let outputFile;
 
-  fs.outputFile(outputFile, data, 'utf8', (err) => {
-    if(err) throw err;
-    console.log(`Bundled Success! output: ${outputFile}`);
-  });
+  switch(program.format) {
+    case 'md':
+      outputFile = path.resolve(process.cwd(), program.path, `${program.name}.md`);
+      break;
+    case 'html':
+      outputFile = path.resolve(process.cwd(), program.path, `${program.name}.html`);
+      break;
+    case 'all':
+      outputFile = {
+        md: path.resolve(process.cwd(), program.path, `${program.name}.md`),
+        html: path.resolve(process.cwd(), program.path, `${program.name}.html`)
+      };
+  }
+
+  function writeFile(file, data) {
+    fs.outputFile(file, data, 'utf8', (err) => {
+      if(err) throw err;
+      console.log(`Bundled Success! output: ${file}`);
+    });
+  }
+
+  if(typeof outputFile === 'object') {
+    Object.keys(outputFile).forEach(type => {
+      writeFile(outputFile[type], data[type]);
+    })
+  } else {
+    writeFile(outputFile, data[program.format]);
+  }
 }

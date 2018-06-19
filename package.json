@@ -2,7 +2,7 @@
   "name": "mdpack",
   "version": "0.1.0",
   "description": "markdown bundler",
-  "main": "index.js",
+  "main": "./lib/mdpack.js",
   "bin": "./bin/mdpack.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

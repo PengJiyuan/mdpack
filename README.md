@@ -50,7 +50,7 @@ module.exports = {
 mdpack -c mdpack.config.js
 ```
 
-* NodeJS
+* **NodeJS**
 
 ```javascript
 const mdpack = require('mdpack');

@@ -25,25 +25,66 @@
 <h2 id="install">Install</h2>
 <pre><code class="language-bash">npm <span class="hljs-selector-tag">i</span> mdpack -g</code></pre>
 <h2 id="usage">Usage</h2>
+<ul>
+<li><strong>CLI</strong></li>
+</ul>
 <pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -o dist/output.md</code></pre>
+<ul>
+<li><strong>Config</strong></li>
+</ul>
+<pre><code class="language-javascript">// mdpack.<span class="hljs-built_in">config</span>.js
+const <span class="hljs-built_in">path</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+const mdpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mdpack'</span>);
+
+module.exports = {
+  entry: <span class="hljs-string">'index.md'</span>,
+  <span class="hljs-built_in">output</span>: {
+    <span class="hljs-built_in">path</span>: <span class="hljs-built_in">path</span>.resolve(__dirname, <span class="hljs-string">'dist'</span>),
+    name: <span class="hljs-string">'mybundle'</span>
+  },
+  <span class="hljs-built_in">format</span>: <span class="hljs-string">'all'</span>,
+  resources: {
+    markdownCss: <span class="hljs-string">'https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css'</span>,
+    highlightCss: <span class="hljs-string">'https://unpkg.com/highlight.js@9.12.0/styles/github-gist.css'</span>
+  },
+  template: <span class="hljs-built_in">path</span>.resolve(__dirname, <span class="hljs-string">'mytemplate.html'</span>),
+  plugins: [
+    // minify html <span class="hljs-built_in">output</span>
+    new mdpack.plugins.mdpackPluginHtmlMinifier(),
+    // add banner <span class="hljs-keyword">and</span> footer to bundled markdown <span class="hljs-keyword">and</span> html.
+    new mdpack.plugins.mdpackPluginBannerFooter({
+      banner: <span class="hljs-string">'# Banner'</span>,
+      footer: <span class="hljs-string">'# Footer'</span>
+    })
+  ]
+};</code></pre>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-markdown">@@import <span class="hljs-string">'path/xx.md'</span></code></pre>
+<p>You can import <strong>markdown</strong> file or even <strong>html</strong> file.</p>
+<pre><code class="language-markdown">@<span class="hljs-keyword">@import</span> <span class="hljs-string">'path/xx.md'</span>
+
+<span class="hljs-variable">@@import</span> <span class="hljs-string">'path/xx.html'</span></code></pre>
 <h2 id="example">Example</h2>
 <p>index.md</p>
 <pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 
-@@import <span class="hljs-string">'./a.md'</span></code></pre>
+@@import <span class="hljs-string">'./a.md'</span>
+
+@@import <span class="hljs-string">'./b.html'</span></code></pre>
 <p>a.md</p>
 <pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
 
 BBBBBBBBBB</code></pre>
+<p>b.html</p>
+<pre><code class="language-html">&lt;h1 <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"mine"</span>&gt;This is my <span class="hljs-keyword">import</span>!<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre>
 <pre><code class="language-bash"><span class="hljs-selector-tag">mdpack</span> <span class="hljs-selector-tag">-e</span> <span class="hljs-selector-tag">index</span><span class="hljs-selector-class">.md</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.md</span></code></pre>
 <p>Will Generate <code>output.md</code> like that:</p>
-<pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"> Title</span>
-<span class="hljs-meta">
-#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
+<pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 
-BBBBBBBBBB</code></pre>
+<span class="hljs-comment">## SubTitle</span>
+
+BBBBBBBBBB
+
+&lt;h1 <span class="hljs-built_in">class</span>=<span class="hljs-string">"mine"</span>&gt;This <span class="hljs-keyword">is</span> <span class="hljs-keyword">my</span> import!&lt;/h1&gt;</code></pre>
 <h2 id="options">Options</h2>
 <h4 id="-e-entry">-e, --entry</h4>
 <p><code>optional</code></p>

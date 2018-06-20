@@ -6,6 +6,8 @@ index.md
 # Title
 
 @@import './a.md'
+
+@@import './b.html'
 ```
 
 a.md
@@ -14,6 +16,12 @@ a.md
 ## SubTitle
 
 BBBBBBBBBB
+```
+
+b.html
+
+```html
+<h1 class="mine">This is my import!</h1>
 ```
 
 ```bash
@@ -28,4 +36,6 @@ Will Generate `output.md` like that:
 ## SubTitle
 
 BBBBBBBBBB
+
+<h1 class="mine">This is my import!</h1>
 ```

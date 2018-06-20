@@ -9,14 +9,51 @@ npm i mdpack -g
 
 ## Usage
 
+* **CLI**
+
 ```bash
 mdpack -e index.md -o dist/output.md
 ```
 
+* **Config**
+
+```javascript
+// mdpack.config.js
+const path = require('path');
+const mdpack = require('mdpack');
+
+module.exports = {
+  entry: 'index.md',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    name: 'mybundle'
+  },
+  format: 'all',
+  resources: {
+    markdownCss: 'https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css',
+    highlightCss: 'https://unpkg.com/highlight.js@9.12.0/styles/github-gist.css'
+  },
+  template: path.resolve(__dirname, 'mytemplate.html'),
+  plugins: [
+    // minify html output
+    new mdpack.plugins.mdpackPluginHtmlMinifier(),
+    // add banner and footer to bundled markdown and html.
+    new mdpack.plugins.mdpackPluginBannerFooter({
+      banner: '# Banner',
+      footer: '# Footer'
+    })
+  ]
+};
+```
+
 ## Syntax
+
+You can import **markdown** file or even **html** file.
 
 ```markdown
 @@import 'path/xx.md'
+
+@@import 'path/xx.html'
 ```
 
 ## Example
@@ -27,6 +64,8 @@ index.md
 # Title
 
 @@import './a.md'
+
+@@import './b.html'
 ```
 
 a.md
@@ -35,6 +74,12 @@ a.md
 ## SubTitle
 
 BBBBBBBBBB
+```
+
+b.html
+
+```html
+<h1 class="mine">This is my import!</h1>
 ```
 
 ```bash
@@ -49,6 +94,8 @@ Will Generate `output.md` like that:
 ## SubTitle
 
 BBBBBBBBBB
+
+<h1 class="mine">This is my import!</h1>
 ```
 
 ## Options

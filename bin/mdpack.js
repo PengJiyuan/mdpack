@@ -4,10 +4,12 @@ const fs = require('fs-extra');
 const program = require('commander');
 const mdpack = require('../lib/mdpack');
 const pkg = require('../package.json');
+const argsToConfig = require('./argsToConfig');
 
 program
   .version(pkg.version)
-  .option('-e, --entry [entry]', 'Entry of markdown')
+  .option('-c, --config [config]', 'Use config file.', 'mdpack.config.js')
+  .option('-e, --entry [entry]', 'Entry of mdpack, a markdown file.')
   .option('-p, --path [path]', 'Output path of bundled markdown file.')
   .option('-n, --name [name]', 'Output name of bundled markdown file.', 'bundle')
   .option('-f, --format [format]', 'Format type of bundle output, (md, html, all)', /^(md|html|all)$/i, 'md')
@@ -16,24 +18,10 @@ program
   .option('-t, --template [template]', 'template file (optional)')
   .parse(process.argv);
 
-function getOptions() {
-  let options = {};
-  if(program.markdownCss) {
-    options.markdownCss = program.markdownCss;
-  }
-  if(program.highlightCss) {
-    options.highlightCss = program.highlightCss;
-  }
-  if(program.template) {
-    options.template = path.resolve(process.cwd(), program.template);
-  }
-
-  return options;
-}
+const config = argsToConfig(program);
 
 if(program.entry && program.path) {
-  const options = getOptions();
-  const data = mdpack(path.resolve(process.cwd(), program.entry), options);
+  const data = mdpack(config);
   let outputFile;
 
   switch(program.format) {

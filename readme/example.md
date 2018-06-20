@@ -8,9 +8,9 @@ index.md
 
 > Attention: double quotes.
 
-/@@import "./a.md"
+@@import "./a.md"
 
-/@@import "./b.html"
+@@import "./b.html"
 ```
 
 a.md

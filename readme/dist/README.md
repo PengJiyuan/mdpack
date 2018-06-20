@@ -72,12 +72,11 @@ const output = mdpack(config);
 You can import **markdown** file or even **html** file.
 
 ```markdown
-@@import 'path/xx.md'
+@@import "path/xx.md"
 
-@@import 'path/xx.html'
+@@import "path/xx.html"
 ```
 
-<!--mdpack-ignore-->
 ## Example
 
 index.md
@@ -87,9 +86,9 @@ index.md
 
 > Attention: double quotes.
 
-/@@import "./a.md"
+@@import "./a.md"
 
-/@@import "./b.html"
+@@import "./b.html"
 ```
 
 a.md

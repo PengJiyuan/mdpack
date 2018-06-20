@@ -79,21 +79,24 @@ module.exports = {
 <pre><code class="language-markdown">@<span class="hljs-keyword">@import</span> <span class="hljs-string">'path/xx.md'</span>
 
 <span class="hljs-variable">@@import</span> <span class="hljs-string">'path/xx.html'</span></code></pre>
+<!--mdpack-ignore-->
 <h2 id="example">Example</h2>
 <p>index.md</p>
-<pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
+<pre><code class="language-markdown"><span class="hljs-meta"># Title</span>
 
-@@import <span class="hljs-string">'./a.md'</span>
+&gt; Attention: <span class="hljs-keyword">double</span> quotes.
 
-@@import <span class="hljs-string">'./b.html'</span></code></pre>
+/@<span class="hljs-keyword">@import</span> <span class="hljs-string">"./a.md"</span>
+
+/@<span class="hljs-keyword">@import</span> <span class="hljs-string">"./b.html"</span></code></pre>
 <p>a.md</p>
 <pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
 
 BBBBBBBBBB</code></pre>
 <p>b.html</p>
 <pre><code class="language-html">&lt;h1 <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"mine"</span>&gt;This is my <span class="hljs-keyword">import</span>!<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre>
-<pre><code class="language-bash"><span class="hljs-selector-tag">mdpack</span> <span class="hljs-selector-tag">-e</span> <span class="hljs-selector-tag">index</span><span class="hljs-selector-class">.md</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.md</span></code></pre>
-<p>Will Generate <code>output.md</code> like that:</p>
+<pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -o output<span class="hljs-selector-class">.md</span> -f all</code></pre>
+<p>Will generate <code>output.md</code> like that:</p>
 <pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 
 <span class="hljs-comment">## SubTitle</span>
@@ -101,6 +104,36 @@ BBBBBBBBBB</code></pre>
 BBBBBBBBBB
 
 &lt;h1 <span class="hljs-built_in">class</span>=<span class="hljs-string">"mine"</span>&gt;This <span class="hljs-keyword">is</span> <span class="hljs-keyword">my</span> import!&lt;/h1&gt;</code></pre>
+<p>Will generate <code>output.html</code> like that:</p>
+<pre><code class="language-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://unpkg.com/highlight.js@9.12.0/styles/github.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+      <span class="hljs-selector-class">.markdown-body</span> {
+        <span class="hljs-attribute">box-sizing</span>: border-box;
+        <span class="hljs-attribute">min-width</span>: <span class="hljs-number">200px</span>;
+        <span class="hljs-attribute">max-width</span>: <span class="hljs-number">980px</span>;
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+        <span class="hljs-attribute">padding</span>: <span class="hljs-number">45px</span>;
+      }
+
+      @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">767px</span>) {
+        <span class="hljs-selector-class">.markdown-body</span> {
+          <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span>;
+        }
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"markdown-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"title"</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"subtitle"</span>&gt;</span>SubTitle<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>BBBBBBBBBB<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mine"</span>&gt;</span>This is my import!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></code></pre>
 <h2 id="options">Options</h2>
 <h4 id="-e-entry">-e, --entry</h4>
 <p><code>optional</code></p>
@@ -122,11 +155,7 @@ BBBBBBBBBB
 <h4 id="-t-template-template-">-t, --template [template]</h4>
 <p><code>optional</code></p>
 <p>Template html file. If you specify a template, this template should contains these keywords:</p>
-<ul>
-<li><code>&lt;% markdownCss %&gt;</code></li>
-<li><code>&lt;% highlightCss %&gt;</code></li>
-<li><code>&lt;% content %&gt;</code></li>
-</ul>
+<p>@@import &quot;options/template.md&quot;</p>
 <h2 id="license">LICENSE</h2>
 <p><a href="./LICENSE">MIT</a> © PengJiyuan</p>
 

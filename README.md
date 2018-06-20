@@ -77,6 +77,7 @@ You can import **markdown** file or even **html** file.
 @@import 'path/xx.html'
 ```
 
+<!--mdpack-ignore-->
 ## Example
 
 index.md
@@ -84,9 +85,11 @@ index.md
 ```markdown
 # Title
 
-@@import './a.md'
+> Attention: double quotes.
 
-@@import './b.html'
+/@@import "./a.md"
+
+/@@import "./b.html"
 ```
 
 a.md
@@ -104,10 +107,10 @@ b.html
 ```
 
 ```bash
-mdpack -e index.md -o output.md
+mdpack -e index.md -o output.md -f all
 ```
 
-Will Generate `output.md` like that:
+Will generate `output.md` like that:
 
 ```markdown
 # Title
@@ -117,6 +120,40 @@ Will Generate `output.md` like that:
 BBBBBBBBBB
 
 <h1 class="mine">This is my import!</h1>
+```
+
+Will generate `output.html` like that:
+
+```html
+<html>
+  <head>
+    <link href="https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css" rel="stylesheet" />
+    <link href="https://unpkg.com/highlight.js@9.12.0/styles/github.css" rel="stylesheet" />
+    <style>
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="markdown-body">
+      <h1 id="title">Title</h1>
+<h2 id="subtitle">SubTitle</h2>
+<p>BBBBBBBBBB</p>
+<h1 class="mine">This is my import!</h1>
+    </div>
+  </body>
+</html>
 ```
 
 ## Options
@@ -161,9 +198,7 @@ Html template highlight css file, if not specified, mdpack will use a default cd
 
 Template html file. If you specify a template, this template should contains these keywords:
 
-* `<% markdownCss %>`
-* `<% highlightCss %>`
-* `<% content %>`
+@@import "options/template.md"
 
 ## LICENSE
 

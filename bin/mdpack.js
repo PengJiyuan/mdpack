@@ -8,7 +8,7 @@ const argsToConfig = require('./argsToConfig');
 
 program
   .version(pkg.version)
-  .option('-c, --config [config]', 'Use config file.', 'mdpack.config.js')
+  .option('-c, --config [config]', 'Use config file.')
   .option('-e, --entry [entry]', 'Entry of mdpack, a markdown file.')
   .option('-p, --path [path]', 'Output path of bundled markdown file.')
   .option('-n, --name [name]', 'Output name of bundled markdown file.', 'bundle')
@@ -18,23 +18,30 @@ program
   .option('-t, --template [template]', 'template file (optional)')
   .parse(process.argv);
 
-const config = argsToConfig(program);
+let config;
 
-if(program.entry && program.path) {
+if(program.config) {
+  config = require(path.resolve(process.cwd(), program.config));
+} else {
+  config = argsToConfig(program);
+}
+
+if(config.entry && config.output.path) {
   const data = mdpack(config);
+  const format = config.format || 'md';
   let outputFile;
 
-  switch(program.format) {
+  switch(format) {
     case 'md':
-      outputFile = path.resolve(process.cwd(), program.path, `${program.name}.md`);
+      outputFile = path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`);
       break;
     case 'html':
-      outputFile = path.resolve(process.cwd(), program.path, `${program.name}.html`);
+      outputFile = path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`);
       break;
     case 'all':
       outputFile = {
-        md: path.resolve(process.cwd(), program.path, `${program.name}.md`),
-        html: path.resolve(process.cwd(), program.path, `${program.name}.html`)
+        md: path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`),
+        html: path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`)
       };
   }
 
@@ -50,6 +57,6 @@ if(program.entry && program.path) {
       writeFile(outputFile[type], data[type]);
     })
   } else {
-    writeFile(outputFile, data[program.format]);
+    writeFile(outputFile, data[format]);
   }
 }

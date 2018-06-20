@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const program = require('commander');
-const bundle = require('../lib/mdpack');
+const mdpack = require('../lib/mdpack');
 const pkg = require('../package.json');
 
 program
@@ -22,7 +22,6 @@ function getOptions() {
     options.markdownCss = program.markdownCss;
   }
   if(program.highlightCss) {
-    console.log('hc');
     options.highlightCss = program.highlightCss;
   }
   if(program.template) {
@@ -34,7 +33,7 @@ function getOptions() {
 
 if(program.entry && program.path) {
   const options = getOptions();
-  const data = bundle(path.resolve(process.cwd(), program.entry), options);
+  const data = mdpack(path.resolve(process.cwd(), program.entry), options);
   let outputFile;
 
   switch(program.format) {

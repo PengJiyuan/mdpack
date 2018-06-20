@@ -40,3 +40,20 @@ module.exports = {
 ```bash
 mdpack -c mdpack.config.js
 ```
+
+* NodeJS
+
+```javascript
+const mdpack = require('mdpack');
+const config = {
+  entry: 'index.md',
+  ...
+};
+const output = mdpack(config);
+
+// output = {
+//   md: 'xxxxxx', // bundled markdown string.
+//   pureHtml: 'xxxxxx', // bundled html string without wrapper.
+//   html: 'xxxxxx' // bundled html with styles and javascript wrapper.
+// }
+```

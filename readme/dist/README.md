@@ -50,6 +50,23 @@ module.exports = {
 mdpack -c mdpack.config.js
 ```
 
+* NodeJS
+
+```javascript
+const mdpack = require('mdpack');
+const config = {
+  entry: 'index.md',
+  ...
+};
+const output = mdpack(config);
+
+// output = {
+//   md: 'xxxxxx', // bundled markdown string.
+//   pureHtml: 'xxxxxx', // bundled html string without wrapper.
+//   html: 'xxxxxx' // bundled html with styles and javascript wrapper.
+// }
+```
+
 ## Syntax
 
 You can import **markdown** file or even **html** file.

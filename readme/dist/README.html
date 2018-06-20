@@ -77,6 +77,9 @@ module.exports = {
 <h2 id="syntax">Syntax</h2>
 <h4 id="import">Import</h4>
 <p>You can import <strong>markdown</strong> file or even <strong>html</strong> file.</p>
+<blockquote>
+<p>Attention: double quotes.</p>
+</blockquote>
 <pre><code class="language-markdown">@<span class="hljs-keyword">@import</span> <span class="hljs-string">"path/xx.md"</span>
 
 <span class="hljs-variable">@@import</span> <span class="hljs-string">"path/xx.html"</span></code></pre>
@@ -85,13 +88,11 @@ module.exports = {
 Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string.</p>
 <h2 id="example">Example</h2>
 <p>index.md</p>
-<pre><code class="language-markdown"><span class="hljs-meta"># Title</span>
+<pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 
-&gt; Attention: <span class="hljs-keyword">double</span> quotes.
+@@import <span class="hljs-string">"./a.md"</span>
 
-@<span class="hljs-keyword">@import</span> <span class="hljs-string">"./a.md"</span>
-
-@<span class="hljs-keyword">@import</span> <span class="hljs-string">"./b.html"</span></code></pre>
+@@import <span class="hljs-string">"./b.html"</span></code></pre>
 <p>a.md</p>
 <pre><code class="language-markdown"><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># SubTitle</span></span>
 

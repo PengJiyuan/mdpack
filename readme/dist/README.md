@@ -73,6 +73,8 @@ const output = mdpack(config);
 
 You can import **markdown** file or even **html** file.
 
+> Attention: double quotes.
+
 ```markdown
 @@import "path/xx.md"
 
@@ -90,8 +92,6 @@ index.md
 
 ```markdown
 # Title
-
-> Attention: double quotes.
 
 @@import "./a.md"
 

@@ -6,8 +6,6 @@ index.md
 ```markdown
 # Title
 
-> Attention: double quotes.
-
 @@import "./a.md"
 
 @@import "./b.html"

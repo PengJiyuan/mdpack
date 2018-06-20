@@ -36,3 +36,7 @@ module.exports = {
   ]
 };
 ```
+
+```bash
+mdpack -c mdpack.config.js
+```

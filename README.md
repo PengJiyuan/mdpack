@@ -46,6 +46,10 @@ module.exports = {
 };
 ```
 
+```bash
+mdpack -c mdpack.config.js
+```
+
 ## Syntax
 
 You can import **markdown** file or even **html** file.

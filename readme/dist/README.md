@@ -164,6 +164,10 @@ Will generate `output.html` like that:
 
 ## Options
 
+#### -c, --config
+
+Specify a config file, usually named `mdpack.config.js`.
+
 #### -e, --entry
 
 `optional`

@@ -75,10 +75,14 @@ module.exports = {
 //</span>   html: <span class="hljs-string">'xxxxxx'</span> <span class="hljs-regexp">// bundled html with styles and javascript wrapper.
 //</span> }</code></pre>
 <h2 id="syntax">Syntax</h2>
+<h4 id="import">Import</h4>
 <p>You can import <strong>markdown</strong> file or even <strong>html</strong> file.</p>
 <pre><code class="language-markdown">@<span class="hljs-keyword">@import</span> <span class="hljs-string">"path/xx.md"</span>
 
 <span class="hljs-variable">@@import</span> <span class="hljs-string">"path/xx.html"</span></code></pre>
+<h4 id="ignore">Ignore</h4>
+<p>You can insert <code>&lt;!--mdpack-ignore--&gt;</code> in markdown file, usually at the top of the file.
+Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string.</p>
 <h2 id="example">Example</h2>
 <p>index.md</p>
 <pre><code class="language-markdown"><span class="hljs-meta"># Title</span>

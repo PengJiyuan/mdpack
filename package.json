@@ -5,6 +5,7 @@
   "main": "./lib/mdpack.js",
   "bin": "./bin/mdpack.js",
   "scripts": {
+    "eslint": "eslint bin/ lib/ --cache",
     "readme": "mdpack -e readme/index.md -p . -n README",
     "precommit": "npm run readme && mdpack -e readme/index.md -p readme/dist -n README -f all && git add ."
   },
@@ -30,6 +31,9 @@
     "marked": "^0.4.0"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "pre-commit": "^1.2.2"
   },
   "pre-commit": [

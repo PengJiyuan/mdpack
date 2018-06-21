@@ -2,7 +2,7 @@
 
 Minify bundled html file.
 
-`new mdpack.plugins.mdpackPluginBannerFooter(opts)`
+`new mdpack.plugins.mdpackPluginHtmlMinifier(opts)`
 
 `opts` is same to [html-minifier](https://github.com/kangax/html-minifier)
 

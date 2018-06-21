@@ -44,4 +44,6 @@ Html template highlight css file, if not specified, mdpack will use a default cd
 
 Template html file. If you specify a template, this template should contains these keywords:
 
-@@import "options/template.md"
+* `<% markdownCss %>`
+* `<% highlightCss %>`
+* `<% content %>`

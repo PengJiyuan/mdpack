@@ -1,3 +1,0 @@
-* `<% markdownCss %>`
-* `<% highlightCss %>`
-* `<% content %>`

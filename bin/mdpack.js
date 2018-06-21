@@ -20,18 +20,18 @@ program
 
 let config;
 
-if(program.config) {
+if (program.config) {
   config = require(path.resolve(process.cwd(), program.config));
 } else {
   config = argsToConfig(program);
 }
 
-if(config.entry && config.output.path) {
+if (config.entry && config.output.path) {
   const data = mdpack(config);
   const format = config.format || 'md';
   let outputFile;
 
-  switch(format) {
+  switch (format) {
     case 'md':
       outputFile = path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`);
       break;
@@ -41,22 +41,25 @@ if(config.entry && config.output.path) {
     case 'all':
       outputFile = {
         md: path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`),
-        html: path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`)
+        html: path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`),
       };
+      break;
+    default:
+      break;
   }
 
-  function writeFile(file, data) {
-    fs.outputFile(file, data, 'utf8', (err) => {
-      if(err) throw err;
-      console.log(`Bundled Success! output: ${file}`);
-    });
-  }
-
-  if(typeof outputFile === 'object') {
-    Object.keys(outputFile).forEach(type => {
+  if (typeof outputFile === 'object') {
+    Object.keys(outputFile).forEach((type) => {
       writeFile(outputFile[type], data[type]);
-    })
+    });
   } else {
     writeFile(outputFile, data[format]);
   }
+}
+
+function writeFile(file, data) {
+  fs.outputFile(file, data, 'utf8', (err) => {
+    if (err) throw err;
+    console.log(`Bundled Success! output: ${file}`);
+  });
 }

@@ -24,6 +24,15 @@
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "max-len": [2, 150],
+    "no-console": 0,
+    "func-names": 0,
+    "no-param-reassign": 0,
+    "no-cond-assign": 0,
+    "one-var": 0,
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "global-require": 0,
+    "import/no-dynamic-require": 0
   }
 }

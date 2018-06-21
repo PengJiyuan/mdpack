@@ -166,6 +166,41 @@ BBBBBBBBBB
 <li><code>&lt;% highlightCss %&gt;</code></li>
 <li><code>&lt;% content %&gt;</code></li>
 </ul>
+<h2 id="plugins">Plugins</h2>
+<p>Mdpack support plugins, See <a href="./.github/HowToWritePlugin.md">how to write a mdpack plugin?</a></p>
+<p>Mdpack also have some plugins inside:</p>
+<ul>
+<li><strong>mdpackPluginBannerFooter</strong></li>
+</ul>
+<p>Add a banner at the top of bundled file, or add a footer at the bottom of bundled file.</p>
+<p><code>new mdpack.plugins.mdpackPluginBannerFooter(opts)</code></p>
+<h4 id="opts-banner-string-">opts.banner {String}</h4>
+<h4 id="opts-footer-string-">opts.footer {String}</h4>
+<pre><code class="language-javascript">module<span class="hljs-selector-class">.exports</span> = {
+  ...,
+  plugins: [
+    new mdpack<span class="hljs-selector-class">.plugins</span><span class="hljs-selector-class">.mdpackPluginBannerFooter</span>({
+      banner: <span class="hljs-string">'# Banner'</span>,
+      <span class="hljs-selector-tag">footer</span>: <span class="hljs-string">'## Footer'</span>
+    })
+  ]
+}</code></pre>
+<ul>
+<li><strong>mdpackPluginHtmlMinifier</strong></li>
+</ul>
+<p>Minify bundled html file.</p>
+<p><code>new mdpack.plugins.mdpackPluginBannerFooter(opts)</code></p>
+<p><code>opts</code> is same to <a href="https://github.com/kangax/html-minifier">html-minifier</a></p>
+<pre><code class="language-javascript"><span class="hljs-string">module.exports</span> <span class="hljs-string">=</span> <span class="hljs-string">{</span>
+  <span class="hljs-string">...,</span>
+<span class="hljs-attr">  plugins:</span> <span class="hljs-string">[</span>
+    <span class="hljs-string">new</span> <span class="hljs-string">mdpack.plugins.mdpackPluginHtmlMinifier({</span>
+<span class="hljs-attr">      removeComments:</span> <span class="hljs-literal">false</span><span class="hljs-string">,</span>
+<span class="hljs-attr">      removeEmptyElements:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
+      <span class="hljs-string">...</span>
+    <span class="hljs-string">})</span>
+  <span class="hljs-string">]</span>
+<span class="hljs-string">}</span></code></pre>
 <h2 id="license">LICENSE</h2>
 <p><a href="./LICENSE">MIT</a> © PengJiyuan</p>
 

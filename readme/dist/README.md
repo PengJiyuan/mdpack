@@ -121,7 +121,7 @@ b.html
 ```
 
 ```bash
-mdpack -e index.md -o output.md -f all
+mdpack -e index.md -p . -n output -f all
 ```
 
 Will generate `output.md` like that:

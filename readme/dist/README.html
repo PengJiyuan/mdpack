@@ -104,7 +104,7 @@ Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string
 BBBBBBBBBB</code></pre>
 <p>b.html</p>
 <pre><code class="language-html">&lt;h1 <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"mine"</span>&gt;This is my <span class="hljs-keyword">import</span>!<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre>
-<pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -o output<span class="hljs-selector-class">.md</span> -f all</code></pre>
+<pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -<span class="hljs-selector-tag">p</span> . -n output -f all</code></pre>
 <p>Will generate <code>output.md</code> like that:</p>
 <pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 

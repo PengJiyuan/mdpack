@@ -1,4 +1,4 @@
-* **mdpackPluginHtmlMinifier**
+### **mdpackPluginHtmlMinifier**
 
 Minify bundled html file.
 

@@ -1,4 +1,4 @@
-* **mdpackPluginBannerFooter**
+### **mdpackPluginBannerFooter**
 
 Add a banner at the top of bundled file, or add a footer at the bottom of bundled file.
 

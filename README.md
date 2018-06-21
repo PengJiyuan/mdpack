@@ -218,7 +218,7 @@ Mdpack support plugins, See [how to write a mdpack plugin?](./.github/HowToWrite
 
 Mdpack also have some plugins inside:
 
-* **mdpackPluginBannerFooter**
+### **mdpackPluginBannerFooter**
 
 Add a banner at the top of bundled file, or add a footer at the bottom of bundled file.
 
@@ -240,7 +240,7 @@ module.exports = {
 }
 ```
 
-* **mdpackPluginHtmlMinifier**
+### **mdpackPluginHtmlMinifier**
 
 Minify bundled html file.
 

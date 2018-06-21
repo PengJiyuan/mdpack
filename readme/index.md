@@ -1,3 +1,7 @@
+[![Travis](https://img.shields.io/travis/PengJiyuan/mdpack.svg)](https://travis-ci.org/PengJiyuan/mdpack)
+[![npm](https://img.shields.io/npm/v/mdpack.svg)](https://www.npmjs.com/package/mdpack)
+[![npm](https://img.shields.io/npm/l/mdpack.svg)](https://www.npmjs.com/package/mdpack)
+
 ![Logo](./.github/logo.png)
 
 # mdpack

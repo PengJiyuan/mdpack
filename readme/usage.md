@@ -3,7 +3,7 @@
 * **CLI**
 
 ```bash
-mdpack -e index.md -o dist/output.md
+mdpack -e index.md -p dist
 ```
 
 * **Config**

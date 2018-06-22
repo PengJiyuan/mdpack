@@ -12,6 +12,7 @@ program
   .option('-p, --path [path]', 'Output path of bundled markdown file.')
   .option('-n, --name [name]', 'Output name of bundled markdown file.', 'bundle')
   .option('-f, --format [format]', 'Format type of bundle output, (md, html, all)', /^(md|html|all)$/i, 'md')
+  .option('-w, --watch', 'Watch files and recompile')
   .option('--mc, --markdownCss [markdownCss]', 'Html template markdown css file')
   .option('--hc, --highlightCss [highlightCss]', 'Html template highlight css file')
   .option('-t, --template [template]', 'template file (optional)')

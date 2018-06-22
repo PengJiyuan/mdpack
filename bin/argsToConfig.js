@@ -43,6 +43,10 @@ function argsToConfig(program) {
     config.template = program.template;
   }
 
+  if (program.watch) {
+    config.watch = program.watch;
+  }
+
   return config;
 }
 

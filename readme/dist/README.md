@@ -50,7 +50,8 @@ module.exports = {
       banner: '# Banner',
       footer: '# Footer'
     })
-  ]
+  ],
+  watch: true
 };
 ```
 
@@ -219,6 +220,10 @@ Template html file. If you specify a template, this template should contains the
 * `<% markdownCss %>`
 * `<% highlightCss %>`
 * `<% content %>`
+
+#### -w, --watch
+
+Watch files change and recompile.
 
 ## Plugins
 

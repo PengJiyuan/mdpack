@@ -33,7 +33,8 @@ module.exports = {
       banner: '# Banner',
       footer: '# Footer'
     })
-  ]
+  ],
+  watch: true
 };
 ```
 

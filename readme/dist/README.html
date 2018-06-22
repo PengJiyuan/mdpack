@@ -61,7 +61,8 @@ module.exports = {
       banner: <span class="hljs-string">'# Banner'</span>,
       footer: <span class="hljs-string">'# Footer'</span>
     })
-  ]
+  ],
+  watch: <span class="hljs-literal">true</span>
 };</code></pre>
 <pre><code class="language-bash">mdpack -c mdpack<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.js</span></code></pre>
 <ul>
@@ -171,6 +172,8 @@ BBBBBBBBBB
 <li><code>&lt;% highlightCss %&gt;</code></li>
 <li><code>&lt;% content %&gt;</code></li>
 </ul>
+<h4 id="-w-watch">-w, --watch</h4>
+<p>Watch files change and recompile.</p>
 <h2 id="plugins">Plugins</h2>
 <p>Mdpack support plugins, See <a href="./.github/HowToWritePlugin.md">how to write a mdpack plugin?</a></p>
 <p>Mdpack also have some plugins inside:</p>

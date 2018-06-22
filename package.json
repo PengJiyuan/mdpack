@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/PengJiyuan/mdpack#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "chokidar": "^2.0.4",
     "commander": "^2.15.1",
     "fs-extra": "^6.0.1",

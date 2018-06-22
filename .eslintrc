@@ -30,7 +30,11 @@
     "func-names": 0,
     "no-param-reassign": 0,
     "no-cond-assign": 0,
+    "no-lonely-if": 0,
+    "no-bitwise": 0,
+    "no-underscore-dangle": 0,
     "one-var": 0,
+    "new-cap": ["error", { "properties": false }],
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
     "global-require": 0,
     "import/no-dynamic-require": 0

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const path = require('path');
-const fs = require('fs-extra');
 const program = require('commander');
 const mdpack = require('../lib/mdpack');
 const pkg = require('../package.json');
@@ -26,40 +25,4 @@ if (program.config) {
   config = argsToConfig(program);
 }
 
-if (config.entry && config.output.path) {
-  const data = mdpack(config);
-  const format = config.format || 'md';
-  let outputFile;
-
-  switch (format) {
-    case 'md':
-      outputFile = path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`);
-      break;
-    case 'html':
-      outputFile = path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`);
-      break;
-    case 'all':
-      outputFile = {
-        md: path.resolve(process.cwd(), config.output.path, `${config.output.name}.md`),
-        html: path.resolve(process.cwd(), config.output.path, `${config.output.name}.html`),
-      };
-      break;
-    default:
-      break;
-  }
-
-  if (typeof outputFile === 'object') {
-    Object.keys(outputFile).forEach((type) => {
-      writeFile(outputFile[type], data[type]);
-    });
-  } else {
-    writeFile(outputFile, data[format]);
-  }
-}
-
-function writeFile(file, data) {
-  fs.outputFile(file, data, 'utf8', (err) => {
-    if (err) throw err;
-    console.log(`Bundled Success! output: ${file}`);
-  });
-}
+mdpack(config);

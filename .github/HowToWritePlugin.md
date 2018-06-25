@@ -3,22 +3,24 @@
 Write a mdpack plugin is very simple, see below:
 
 ```javascript
-function mdpackPluginXXX(opts) {
-  this.name = opts.name;
-}
-
-// context is bundled markdown string or bundled html string
-// you can distinguish between them by type.
-mdpackPluginXXX.prototype.parse = function(context, type) {
-  if(type === 'md') {
-    context += this.name;
+class mdpackPluginXXX(opts) {
+  constructor() {
+    this.name = opts.name;
   }
 
-  if(type === 'html') {
-    context += `<h1>this.name<h1>`;
-  }
+  // context is bundled markdown string or bundled html string
+  // you can distinguish between them by type.
+  parse(context, type) {
+    if(type === 'md') {
+      context += this.name;
+    }
 
-  return context;
+    if(type === 'html') {
+      context += `<h1>this.name<h1>`;
+    }
+
+    return context;
+  }
 }
 
 module.exports = mdpackPluginXXX;

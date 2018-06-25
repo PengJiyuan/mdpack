@@ -121,8 +121,20 @@ b.html
 <h1 class="mine">This is my import!</h1>
 ```
 
+run `mdpack`:
+
 ```bash
 mdpack -e index.md -p . -n output -f all
+```
+
+mdpack output:
+
+```
+[Mdpack] bundled success!
+
+Time: 16ms
+[output] output.md  74B
+[output] output.html  704B
 ```
 
 Will generate `output.md` like that:

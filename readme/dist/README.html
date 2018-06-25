@@ -105,8 +105,14 @@ Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string
 BBBBBBBBBB</code></pre>
 <p>b.html</p>
 <pre><code class="language-html">&lt;h1 <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"mine"</span>&gt;This is my <span class="hljs-keyword">import</span>!<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></code></pre>
+<p>run <code>mdpack</code>:</p>
 <pre><code class="language-bash">mdpack -e index<span class="hljs-selector-class">.md</span> -<span class="hljs-selector-tag">p</span> . -n output -f all</code></pre>
-<p>Will generate <code>output.md</code> like that:</p>
+<p>mdpack output:</p>
+<pre><code><span class="hljs-selector-attr">[Mdpack]</span> <span class="hljs-selector-tag">bundled</span> <span class="hljs-selector-tag">success</span>!
+
+<span class="hljs-selector-tag">Time</span>: 16<span class="hljs-selector-tag">ms</span>
+<span class="hljs-selector-attr">[output]</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.md</span>  74<span class="hljs-selector-tag">B</span>
+<span class="hljs-selector-attr">[output]</span> <span class="hljs-selector-tag">output</span><span class="hljs-selector-class">.html</span>  704<span class="hljs-selector-tag">B</span></code></pre><p>Will generate <code>output.md</code> like that:</p>
 <pre><code class="language-markdown"><span class="hljs-comment"># Title</span>
 
 <span class="hljs-comment">## SubTitle</span>

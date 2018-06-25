@@ -70,16 +70,10 @@ module.exports = {
 </ul>
 <pre><code class="language-javascript"><span class="hljs-keyword">const</span> mdpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mdpack'</span>);
 <span class="hljs-keyword">const</span> config = {
-  entry: <span class="hljs-string">'index.md'</span>,
+  <span class="hljs-attr">entry</span>: <span class="hljs-string">'index.md'</span>,
   ...
 };
-<span class="hljs-keyword">const</span> output = mdpack(config);
-
-<span class="hljs-regexp">// output = {
-//</span>   md: <span class="hljs-string">'xxxxxx'</span>, <span class="hljs-regexp">// bundled markdown string.
-//</span>   pureHtml: <span class="hljs-string">'xxxxxx'</span>, <span class="hljs-regexp">// bundled html string without wrapper.
-//</span>   html: <span class="hljs-string">'xxxxxx'</span> <span class="hljs-regexp">// bundled html with styles and javascript wrapper.
-//</span> }</code></pre>
+mdpack(config);</code></pre>
 <h2 id="syntax">Syntax</h2>
 <h4 id="import">Import</h4>
 <p>You can import <strong>markdown</strong> file or even <strong>html</strong> file.</p>

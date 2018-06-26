@@ -3,7 +3,7 @@
 
 #### Import
 
-You can import **markdown** file or even **html** file.
+You can import **markdown** file or **html** file or any file type.
 
 > Attention: double quotes.
 

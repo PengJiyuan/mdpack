@@ -21,6 +21,17 @@ class mdpackPluginXXX(opts) {
 
     return context;
   }
+
+  // tranform code block.
+  // source is the source code.
+  // lang is the language name.
+  code(source, lang) {
+    // eg. we use babel to transpile javascript code.
+    if (lang === 'javascript') {
+      source = babel.transform(source, {...});
+    }
+    return source;
+  }
 }
 
 module.exports = mdpackPluginXXX;

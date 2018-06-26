@@ -35,7 +35,7 @@ npm i mdpack -D</code></pre>
 <ul>
 <li><strong>CLI</strong></li>
 </ul>
-<pre><code class="language-bash">mdpack%20-e%20index.md%20-p%20dist</code></pre>
+<pre><code class="language-bash">mdpack -e index.md -p dist</code></pre>
 <ul>
 <li><strong>Config</strong></li>
 </ul>
@@ -66,7 +66,7 @@ npm i mdpack -D</code></pre>
   ],
   <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>
 };</code></pre>
-<pre><code class="language-bash">mdpack%20-c%20mdpack.config.js</code></pre>
+<pre><code class="language-bash">mdpack -c mdpack.config.js</code></pre>
 <ul>
 <li><strong>NodeJS</strong></li>
 </ul>
@@ -82,10 +82,28 @@ mdpack(config);</code></pre>
 <blockquote>
 <p>Attention: double quotes.</p>
 </blockquote>
-<pre><code class="language-markdown">@@import%20%22path/xx.md%22%0A%0A@@import%20%22path/xx.html%22</code></pre>
+<pre><code class="language-markdown">@@import &quot;path/xx.md&quot;
+
+@@import &quot;path/xx.html&quot;</code></pre>
 <h4 id="ignore">Ignore</h4>
 <p>You can insert <code>&lt;!--mdpack-ignore--&gt;</code> in markdown file, usually at the top of the file.
 Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string.</p>
+<h4 id="code-exec">Code exec</h4>
+<p>If you want the code you inserted execute, just comment <code>// mdpack-exec</code> on the top of code block.</p>
+<p>eg:</p>
+<pre><code class="language-markdown">// mdpack-exec
+const list = [&#39;peng&#39;, &#39;ji&#39;, &#39;yuan&#39;];
+console.log(...list);</code></pre>
+<p>will output:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-comment">// mdpack-exec</span>
+<span class="hljs-keyword">const</span> list = [<span class="hljs-string">'peng'</span>, <span class="hljs-string">'ji'</span>, <span class="hljs-string">'yuan'</span>];
+<span class="hljs-built_in">console</span>.log(...list);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>You can also use <a href="https://github.com/PengJiyuan/mdpack-plugin-babel">mdpack-plugin-babel</a> to transform javascript code:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-meta">
+"use strict"</span>;<span class="hljs-keyword">var</span> _console,list=[<span class="hljs-string">"peng"</span>,<span class="hljs-string">"ji"</span>,<span class="hljs-string">"yuan"</span>];(_console=<span class="hljs-built_in">console</span>).log.apply(_console,list)
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <h2 id="example">Example</h2>
 <p>index.md</p>
 <pre><code class="language-markdown"><span class="hljs-section"># Title</span>
@@ -100,9 +118,13 @@ BBBBBBBBBB</code></pre>
 <p>b.html</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mine"</span>&gt;</span>This is my import!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></code></pre>
 <p>run <code>mdpack</code>:</p>
-<pre><code class="language-bash">mdpack%20-e%20index.md%20-p%20.%20-n%20output%20-f%20md%2Chtml</code></pre>
+<pre><code class="language-bash">mdpack -e index.md -p . -n output -f md,html</code></pre>
 <p>mdpack output:</p>
-<pre><code>%5BMdpack%5D%20bundled%20success%21%0A%0ATime%3A%2016ms%0A%5Boutput%5D%20output.md%20%2074B%0A%5Boutput%5D%20output.html%20%20704B</code></pre><p>Will generate <code>output.md</code> like that:</p>
+<pre><code>[Mdpack] bundled success!
+
+Time: 16ms
+[output] output.md  74B
+[output] output.html  704B</code></pre><p>Will generate <code>output.md</code> like that:</p>
 <pre><code class="language-markdown"><span class="hljs-section"># Title</span>
 
 <span class="hljs-section">## SubTitle</span>
@@ -172,6 +194,21 @@ BBBBBBBBBB
 <p>Watch files change and recompile.</p>
 <h2 id="plugins">Plugins</h2>
 <p>Mdpack support plugins, See <a href="./.github/HowToWritePlugin.md">how to write a mdpack plugin?</a></p>
+<h4 id="plugin-list">Plugin List</h4>
+<table>
+<thead>
+<tr>
+<th>Plugin name</th>
+<th align="center">Description</th>
+<th align="right">Author</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/PengJiyuan/mdpack-plugin-babel">mdpack-plugin-babel</a></td>
+<td align="center">A mdpack plugin use babel to transform mdpack-exec code to es5.</td>
+<td align="right"><a href="https://github.com/PengJiyuan">PengJiyuan</a></td>
+</tr>
+</tbody></table>
 <p>Mdpack also have some plugins inside:</p>
 <h3 id="mdpackpluginbannerfooter"><strong>mdpackPluginBannerFooter</strong></h3>
 <p>Add a banner at the top of bundled file, or add a footer at the bottom of bundled file.</p>

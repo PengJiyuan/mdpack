@@ -91,6 +91,36 @@ You can import **markdown** file or **html** file or any file type.
 You can insert `<!--mdpack-ignore-->` in markdown file, usually at the top of the file.
 Then mdpack will just output `@@import "xx.md"` as a string.
 
+#### Code exec
+
+If you want the code you inserted execute, just comment `// mdpack-exec` on the top of code block.
+
+eg:
+
+```markdown
+// mdpack-exec
+const list = ['peng', 'ji', 'yuan'];
+console.log(...list);
+```
+
+will output:
+
+```html
+<script>
+// mdpack-exec
+const list = ['peng', 'ji', 'yuan'];
+console.log(...list);
+</script>
+```
+
+You can also use [mdpack-plugin-babel](https://github.com/PengJiyuan/mdpack-plugin-babel) to transform javascript code:
+
+```html
+<script>
+"use strict";var _console,list=["peng","ji","yuan"];(_console=console).log.apply(_console,list)
+</script>
+```
+
 ## Example
 
 index.md
@@ -236,6 +266,12 @@ Watch files change and recompile.
 ## Plugins
 
 Mdpack support plugins, See [how to write a mdpack plugin?](./.github/HowToWritePlugin.md)
+
+#### Plugin List
+
+| Plugin name   |      Description      |  Author |
+|----------|:-------------:|------:|
+| [mdpack-plugin-babel](https://github.com/PengJiyuan/mdpack-plugin-babel) |  A mdpack plugin use babel to transform mdpack-exec code to es5. | [PengJiyuan](https://github.com/PengJiyuan) |
 
 Mdpack also have some plugins inside:
 

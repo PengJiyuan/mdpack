@@ -36,7 +36,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     name: 'mybundle'
   },
-  format: 'all',
+  format: ['md', 'html'],
   resources: {
     markdownCss: 'https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css',
     highlightCss: 'https://unpkg.com/highlight.js@9.12.0/styles/github-gist.css'
@@ -118,7 +118,7 @@ b.html
 run `mdpack`:
 
 ```bash
-mdpack -e index.md -p . -n output -f all
+mdpack -e index.md -p . -n output -f md,html
 ```
 
 mdpack output:

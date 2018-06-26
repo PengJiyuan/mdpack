@@ -47,7 +47,7 @@
     <span class="hljs-attr">path</span>: path.resolve(__dirname, <span class="hljs-string">'dist'</span>),
     <span class="hljs-attr">name</span>: <span class="hljs-string">'mybundle'</span>
   },
-  <span class="hljs-attr">format</span>: <span class="hljs-string">'all'</span>,
+  <span class="hljs-attr">format</span>: [<span class="hljs-string">'md'</span>, <span class="hljs-string">'html'</span>],
   <span class="hljs-attr">resources</span>: {
     <span class="hljs-attr">markdownCss</span>: <span class="hljs-string">'https://unpkg.com/github-markdown-css@2.10.0/github-markdown.css'</span>,
     <span class="hljs-attr">highlightCss</span>: <span class="hljs-string">'https://unpkg.com/highlight.js@9.12.0/styles/github-gist.css'</span>
@@ -98,7 +98,7 @@ BBBBBBBBBB</code></pre>
 <p>b.html</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mine"</span>&gt;</span>This is my import!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></code></pre>
 <p>run <code>mdpack</code>:</p>
-<pre><code class="language-bash">mdpack%20-e%20index.md%20-p%20.%20-n%20output%20-f%20all</code></pre>
+<pre><code class="language-bash">mdpack%20-e%20index.md%20-p%20.%20-n%20output%20-f%20md%2Chtml</code></pre>
 <p>mdpack output:</p>
 <pre><code>%5BMdpack%5D%20bundled%20success%21%0A%0ATime%3A%2016ms%0A%5Boutput%5D%20output.md%20%2074B%0A%5Boutput%5D%20output.html%20%20704B</code></pre><p>Will generate <code>output.md</code> like that:</p>
 <pre><code class="language-markdown"><span class="hljs-section"># Title</span>

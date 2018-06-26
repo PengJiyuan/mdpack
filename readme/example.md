@@ -28,7 +28,7 @@ b.html
 run `mdpack`:
 
 ```bash
-mdpack -e index.md -p . -n output -f all
+mdpack -e index.md -p . -n output -f md,html
 ```
 
 mdpack output:

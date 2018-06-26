@@ -22,7 +22,7 @@ function argsToConfig(program) {
   }
 
   if (program.format) {
-    config.format = program.format;
+    config.format = program.format.split(',');
   }
 
   config.resources = {};

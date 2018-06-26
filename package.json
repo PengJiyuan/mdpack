@@ -7,7 +7,7 @@
   "scripts": {
     "eslint": "eslint bin/ lib/ --cache",
     "readme": "mdpack -e readme/index.md -p . -n README",
-    "precommit": "npm run readme && mdpack -e readme/index.md -p readme/dist -n README -f all && git add ."
+    "precommit": "npm run readme && mdpack -e readme/index.md -p readme/dist -n README -f md,html && git add ."
   },
   "repository": {
     "type": "git",

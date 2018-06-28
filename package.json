@@ -1,6 +1,6 @@
 {
   "name": "mdpack",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "markdown bundler",
   "main": "./lib/mdpack.js",
   "bin": "./bin/mdpack.js",

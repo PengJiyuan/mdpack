@@ -95,12 +95,11 @@ Then mdpack will just output <code>@@import &quot;xx.md&quot;</code> as a string
 const list = [&#39;peng&#39;, &#39;ji&#39;, &#39;yuan&#39;];
 console.log(...list);</code></pre>
 <p>will output:</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-<span class="hljs-comment">// mdpack-exec</span>
-<span class="hljs-keyword">const</span> list = [<span class="hljs-string">'peng'</span>, <span class="hljs-string">'ji'</span>, <span class="hljs-string">'yuan'</span>];
-<span class="hljs-built_in">console</span>.log(...list);
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<p>You can also use <a href="https://github.com/PengJiyuan/mdpack-plugin-babel">mdpack-plugin-babel</a> to transform javascript code:</p>
+<script>
+
+const list = ['peng', 'ji', 'yuan'];
+console.log(...list);
+</script><p>You can also use <a href="https://github.com/PengJiyuan/mdpack-plugin-babel">mdpack-plugin-babel</a> to transform javascript code:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-meta">
 "use strict"</span>;<span class="hljs-keyword">var</span> _console,list=[<span class="hljs-string">"peng"</span>,<span class="hljs-string">"ji"</span>,<span class="hljs-string">"yuan"</span>];(_console=<span class="hljs-built_in">console</span>).log.apply(_console,list)
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>

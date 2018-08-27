@@ -194,48 +194,48 @@ BBBBBBBBBB
       <a href="#options" aria-hidden="true"><i class="icon icon-link"></i></a>
       Options
     </h2>
-<h4 id="-c-config">
-      <a href="#-c-config" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-c,---config">
+      <a href="#-c,---config" aria-hidden="true"><i class="icon icon-link"></i></a>
       -c, --config
     </h4>
 <p>Specify a config file, usually named <code>mdpack.config.js</code>.</p>
-<h4 id="-e-entry">
-      <a href="#-e-entry" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-e,---entry">
+      <a href="#-e,---entry" aria-hidden="true"><i class="icon icon-link"></i></a>
       -e, --entry
     </h4>
 <p><code>optional</code></p>
 <p>Entry of mdpack, a markdown file. (default: <code>index.md</code>)</p>
-<h4 id="-p-path">
-      <a href="#-p-path" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-p,---path">
+      <a href="#-p,---path" aria-hidden="true"><i class="icon icon-link"></i></a>
       -p, --path
     </h4>
 <p>Output path of bundled markdown file.</p>
-<h4 id="-n-name">
-      <a href="#-n-name" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-n,---name">
+      <a href="#-n,---name" aria-hidden="true"><i class="icon icon-link"></i></a>
       -n, --name
     </h4>
 <p><code>optional</code></p>
 <p>Output name of bundled markdown file. (default: <code>bundle</code>)</p>
-<h4 id="-f-format-md-html-all-">
-      <a href="#-f-format-md-html-all-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-f,---format-[md-|-html-|-all]">
+      <a href="#-f,---format-[md-|-html-|-all]" aria-hidden="true"><i class="icon icon-link"></i></a>
       -f, --format [md | html | all]
     </h4>
 <p><code>optional</code></p>
 <p>Format type of bundle output. (default: <code>md</code>)</p>
-<h4 id="-mc-markdowncss-markdowncss-">
-      <a href="#-mc-markdowncss-markdowncss-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="--mc,---markdowncss-[markdowncss]">
+      <a href="#--mc,---markdowncss-[markdowncss]" aria-hidden="true"><i class="icon icon-link"></i></a>
       --mc, --markdownCss [markdownCss]
     </h4>
 <p><code>optional</code></p>
 <p>Html template markdown css file, if not specified, mdpack will use a default cdn css.</p>
-<h4 id="-hc-highlightcss-highlightcss-">
-      <a href="#-hc-highlightcss-highlightcss-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="--hc,---highlightcss-[highlightcss]">
+      <a href="#--hc,---highlightcss-[highlightcss]" aria-hidden="true"><i class="icon icon-link"></i></a>
       --hc, --highlightCss [highlightCss]
     </h4>
 <p><code>optional</code></p>
 <p>Html template highlight css file, if not specified, mdpack will use a default cdn css.</p>
-<h4 id="-t-template-template-">
-      <a href="#-t-template-template-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-t,---template-[template]">
+      <a href="#-t,---template-[template]" aria-hidden="true"><i class="icon icon-link"></i></a>
       -t, --template [template]
     </h4>
 <p><code>optional</code></p>
@@ -245,8 +245,8 @@ BBBBBBBBBB
 <li><code>&lt;% highlightCss %&gt;</code></li>
 <li><code>&lt;% content %&gt;</code></li>
 </ul>
-<h4 id="-w-watch">
-      <a href="#-w-watch" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="-w,---watch">
+      <a href="#-w,---watch" aria-hidden="true"><i class="icon icon-link"></i></a>
       -w, --watch
     </h4>
 <p>Watch files change and recompile.</p>
@@ -280,12 +280,12 @@ BBBBBBBBBB
     </h3>
 <p>Add a banner at the top of bundled file, or add a footer at the bottom of bundled file.</p>
 <p><code>new mdpack.plugins.mdpackPluginBannerFooter(opts)</code></p>
-<h4 id="opts-banner-string-">
-      <a href="#opts-banner-string-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="opts.banner-{string}">
+      <a href="#opts.banner-{string}" aria-hidden="true"><i class="icon icon-link"></i></a>
       opts.banner {String}
     </h4>
-<h4 id="opts-footer-string-">
-      <a href="#opts-footer-string-" aria-hidden="true"><i class="icon icon-link"></i></a>
+<h4 id="opts.footer-{string}">
+      <a href="#opts.footer-{string}" aria-hidden="true"><i class="icon icon-link"></i></a>
       opts.footer {String}
     </h4>
 <pre><code class="language-javascript"><span class="hljs-built_in">module</span>.exports = {
